@@ -1,0 +1,77 @@
+:root {
+  --bg-main: #edfdf4;
+  --bg-dark: #490011;
+  --bg-light: #a6001e;
+  --text-color-dark: #490011;
+  --text-color-light: #a6001e;
+  --other-color: #2a8464;
+}
+
+.nav_cover {
+  background-color: var(--bg-dark);
+}
+
+.nav_logo_link {
+  color: var(--text-color-light);
+}
+
+.logo_inner {
+  color: var(--text-color-white);
+}
+
+.nav_list {
+  color: var(--text-color-white);
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav_list::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: -5px;
+  background-color: var(--bg-main);
+  height: 3px;
+  width: 0;
+  transition: 0.3s;
+
+  border-radius: 3px;
+}
+
+.nav_list:hover::before {
+  width: 100%;
+}
+
+.activeLink {
+  color: var(--bg-light);
+  position: relative;
+}
+
+.activeLink::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: -5px;
+  background-color: var(--bg-main);
+  height: 3px;
+  width: 100%;
+  transition: 0.3s;
+  border-radius: 3px;
+}
+
+.nav_search_cover {
+  width: 35px;
+  height: 35px;
+  background-color: #edfdf453;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.nav_search {
+  color: var(--text-color-white);
+  transition: 0.5s;
+}
+
+.nav_search_cover:hover .nav_search {
+  rotate: 30deg;
+}
