@@ -1,8 +1,11 @@
+import Hero from "../UI/Hero"
+import Trending from "../UI/Trending"
 
 const Dashboard = () => {
   return (
     <div>
-      Food
+      <Hero/>
+      <Trending />
     </div>
   )
 }
