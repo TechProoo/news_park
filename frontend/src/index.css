@@ -49,3 +49,21 @@ body {
 .text-white{
   color: var(--text-main);
 }
+.bg-white{
+  color: var(--text-main);
+}
+
+.text-light {
+  color: var(--text-color-dark);
+}
+
+.border-b {
+  border-color: #a6001e1e;
+}
+.framer-VXjf8 .framer-1205fn6 {
+  flex: none;
+  inset: 0;
+  overflow: visible;
+  position: absolute;
+  z-index: 1;
+}

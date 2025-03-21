@@ -1,14 +1,22 @@
 import { Route, Routes } from "react-router-dom";
-import Dashboard from "./Pages/Dashboard";
 import Navbar from "./Components/Navbar";
 import "./App.css";
+import Home from "./Pages/Home";
+import Category from "./Pages/Category";
+import NotFound from "./Pages/NotFound";
+import Footer from "./Components/Footer";
+import SearchResult from "./Pages/SearchResult";
 const App = () => {
   return (
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/category/:id" element={<Category />} />
+        <Route path="/search/:result" element={<SearchResult />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 };

@@ -4,11 +4,22 @@ interface imageCardProp {
   category: string;
   date: string;
   title: string;
+  width?: string;
+  height?: string;
 }
 
-const ImageCard: React.FC<imageCardProp> = ({ category, date, title }) => {
+const ImageCard: React.FC<imageCardProp> = ({
+  category,
+  date,
+  title,
+  width = "100%",
+  height = "300px",
+}) => {
   return (
-    <div className="image_card_cover rounded-lg md:w-[350px]">
+    <div
+      style={{ height: `${height}`, width: `${width}` }}
+      className={`image_card_cover rounded-lg `}
+    >
       <div className="image_card_inner">
         <div className="image_content_top flex gap-4 items-center">
           <span className="image_card_category px-3 py-2 text-xs font-black  rounded-full">
@@ -21,6 +32,11 @@ const ImageCard: React.FC<imageCardProp> = ({ category, date, title }) => {
         </div>
         <div className="mt-3">
           <h1 className="text-white lnk">{title}</h1>
+        </div>
+        <div className="image_author mt-2">
+          <b className="text-sm fnt text-white">
+            By <span>Tech Pro</span>
+          </b>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { categories } from "../Data/categories";
 import { Search } from "lucide-react";
 import { useState } from "react";
-import SearchModal from "./SearchModal";
+import SearchModal from "../UI/SearchModal";
 
 
 

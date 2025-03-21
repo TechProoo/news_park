@@ -1,0 +1,39 @@
+import Divide from "../Components/Divider";
+import Hero from "../UI/Hero";
+import News from "../UI/Section";
+import SectionThree from "../UI/SectionThree";
+import SectionTwo from "../UI/SectionTwo";
+import Trending from "../UI/Trending";
+import newsData from "../Data/trending";
+import Footer from "../Components/Footer";
+
+const Home = () => {
+  const filteredData = (cat: string) => {
+    return newsData.filter((item) => item.category === cat);
+  };
+  return (
+    <div className="pb-10">
+      <Hero />
+      <div className="w-11/12 m-auto">
+        <Trending />
+        <Divide />
+        <News cat="News" />
+        <Divide />
+        <News cat="Politics" space={4} />
+        <Divide />
+        <SectionTwo cat="Tech" />
+        <Divide />
+        <SectionTwo cat="Sports" />
+        <Divide />
+        <div className="md:flex items-center gap-5 md:gap-10">
+          <SectionThree data={filteredData("Travel")} />
+          <SectionThree data={filteredData("Travel")} />
+          <SectionThree data={filteredData("Travel")} />
+        </div>
+      </div>
+
+    </div>
+  );
+};
+
+export default Home;

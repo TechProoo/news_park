@@ -187,14 +187,14 @@
 
 .image_card_inner {
   position: absolute;
-  left: 10%;
+  left: 5%;
   bottom: 10%;
 }
 
 .image_card_date {
   transform: translate3d(0, 1rem, 0);
   opacity: 0;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .image_card_category {
@@ -205,6 +205,10 @@
 .image_card_cover:hover .image_card_date {
   transform: translate3d(0, 0, 0);
   opacity: 1;
+}
+
+.image_author b span {
+  color: var(--text-color-light);
 }
 
 /* -- Card Two -- */
@@ -223,7 +227,7 @@
   object-fit: cover;
 }
 
-.card_two_category {
+.badge_category {
   background-color: #a6001e48;
   font-size: 11px;
 }
@@ -231,3 +235,147 @@
 .card_two_head {
   color: var(--text-color-dark);
 }
+
+/* WEATHER */
+.weather_cover {
+  background-color: var(--bg-dark);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.weather_gradient {
+  background-image: radial-gradient(
+    circle,
+    rgba(73, 0, 17, 0.85),
+    rgba(86, 37, 5, 0.75),
+    rgba(85, 71, 11, 0.65),
+    rgba(73, 0, 17, 0.55),
+    rgba(73, 0, 17, 0.7)
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.weather_location {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.weather_temp h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+  color: var(--text-main);
+}
+
+.weather_temp small {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.weather_icons {
+  margin: 10px 0;
+}
+
+.weather_details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.weather_detail_item {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  font-size: 0.5rem;
+}
+
+.weather_icon {
+  color: var(--text-color-light);
+}
+
+.weather_hourly .hr_icon {
+  color: var(--text-color-light);
+}
+
+.weather_hourly small {
+  color: var(--text-main);
+}
+
+.weather_hourly_inner {
+  overflow-x: scroll;
+}
+
+.weather_hourly_inner::-webkit-scrollbar {
+  display: none;
+}
+
+.hourly_bg {
+  background-color: var(--bg-main);
+}
+
+.hourly_time h1 {
+  color: var(--bg-dark);
+  font-weight: bold;
+}
+
+.hourly_degree {
+  font-weight: bolder;
+  color: var(--text-color-light);
+}
+
+/* CARD THREE */
+
+.card_three_cover img {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
+}
+
+.card_three_cover img:hover {
+  scale: 1.1;
+}
+
+.card_three_cover {
+  border-color: #a6001e1e;
+}
+
+/* CARD FOUR */
+
+.section_three_head {
+  border-left: 4px solid var(--bg-light);
+  padding-left:15px;
+}
+
+.card_four_image {
+  overflow: hidden;
+}
+
+.card_four_image img {
+  transition: .3s;
+}
+
+.card_four_image img:hover {
+  scale: 1.1;
+}
+
+.card_four_cover h1 {
+  font-weight: 700;
+  width: 90%;
+}
+
+.card_four_description p {
+  color: #ccc;
+}
+
+.section_three_content {
+  border-top: 1px solid #a6001e1e;
+  color: #490011; 
+}
+

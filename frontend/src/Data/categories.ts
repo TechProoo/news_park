@@ -1,12 +1,44 @@
-const categories: { name: string; to: string }[] = [
-  { name: "Home", to: "/home" },
-  { name: "News", to: "/news" },
-  { name: "Politics", to: "/politics" },
-  { name: "Entertainment", to: "/entertainment" },
-  { name: "Sports", to: "/sports" },
-  { name: "Business", to: "/business" },
-  { name: "Technology", to: "/technology" },
-  { name: "TNG Investigations", to: "/investigations" },
+const categories: { name: string; to: string; description: string }[] = [
+  {
+    name: "Home",
+    to: "/",
+    description: "Welcome to our homepage with the latest updates.",
+  },
+  {
+    name: "News",
+    to: "/category/news",
+    description: "Stay informed with breaking news and updates.",
+  },
+  {
+    name: "Politics",
+    to: "/category/politics",
+    description: "Get the latest political news and analysis.",
+  },
+  {
+    name: "Entertainment",
+    to: "/category/entertainment",
+    description: "Catch up on movies, music, and celebrity gossip.",
+  },
+  {
+    name: "Sports",
+    to: "/category/sports",
+    description: "Live scores, highlights, and sports news.",
+  },
+  {
+    name: "Business",
+    to: "/category/business",
+    description: "Market trends, financial news, and economy insights.",
+  },
+  {
+    name: "Technology",
+    to: "/category/technology",
+    description: "Discover the latest in tech and innovation.",
+  },
+  {
+    name: "UI",
+    to: "/category/ui",
+    description: "Updates and trends in user interface design.",
+  },
 ];
 
 export { categories };

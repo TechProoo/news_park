@@ -1,5 +1,6 @@
 import { Calendar } from "lucide-react";
 import Image from "../assets/dark.jpg";
+import BadgeInfo from "./Badge";
 
 interface cardTwoProp {
   category: string;
@@ -9,16 +10,14 @@ interface cardTwoProp {
 
 const CardTwo: React.FC<cardTwoProp> = ({ category, date, title }) => {
   return (
-    <div className="card_two_cover  border-b pb-3 border-gray-300">
+    <div className="card_two_cover  border-b py-3 border-gray-300">
       <div className="flex items-center gap-4">
         <div className="card_two_img rounded-md">
           <img src={Image} className="rounded-md" alt="" />
         </div>
         <div className="card_two_content">
           <div className="card_two_upper flex gap-2">
-            <small className="card_two_category px-2 py-1 font-black  rounded-md">
-              {category}
-            </small>
+            <BadgeInfo content={category} />
             <div className="flex gap-1 card_two_date items-center">
               <Calendar className="text-gray-300" size={10} />
               <small className=" fnt text-xsm text-gray-300">{date}</small>
