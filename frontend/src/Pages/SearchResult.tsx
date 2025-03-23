@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BreadCrumb from "../Components/BreadCrumb";
 import NewsCard from "../Components/CardFive";
@@ -7,67 +7,80 @@ import Pagin from "../Components/Pagination";
 import Trending from "../UI/Trending";
 import Divide from "../Components/Divider";
 import { categories } from "../Data/categories";
+import NotFound from "../UI/NotFound";
 
 const sampleNews = [
   {
     image: "/path-to-image.jpg",
     category: "News",
-    title: "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
+    title:
+      "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
     author: "BAYO MILLZ",
     date: "March 18, 2025",
     comments: 0,
     views: 1400,
-    description: "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
+    description:
+      "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
   },
   {
     image: "/path-to-image.jpg",
     category: "News",
-    title: "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
+    title:
+      "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
     author: "BAYO MILLZ",
     date: "March 18, 2025",
     comments: 0,
     views: 1400,
-    description: "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
+    description:
+      "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
   },
   {
     image: "/path-to-image.jpg",
     category: "News",
-    title: "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
+    title:
+      "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
     author: "BAYO MILLZ",
     date: "March 18, 2025",
     comments: 0,
     views: 1400,
-    description: "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
+    description:
+      "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
   },
   {
     image: "/path-to-image.jpg",
     category: "News",
-    title: "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
+    title:
+      "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
     author: "BAYO MILLZ",
     date: "March 18, 2025",
     comments: 0,
     views: 1400,
-    description: "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
+    description:
+      "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
   },
   {
     image: "/path-to-image.jpg",
     category: "News",
-    title: "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
+    title:
+      "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
     author: "BAYO MILLZ",
     date: "March 18, 2025",
     comments: 0,
     views: 1400,
-    description: "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
+    description:
+      "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
   },
   {
     image: "/path-to-image.jpg",
     category: "News",
-    title: "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
+    title:
+      "Ex-lawmaker supports Tinubu’s state of emergency declaration in Rivers",
     author: "BAYO MILLZ",
     date: "March 18, 2025",
     comments: 0,
     views: 1400,
-    description: "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
+    description:
+      "Sir Jude Idimogu, a former two-term Lagos State House of Assembly member, has commended President Bola Tinubu for declaring a...",
   },
 ];
 
@@ -78,8 +91,8 @@ const SearchResult = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [found, setFound] = useState(true);
 
-  const filterCategory = categories.filter(
-    (category) => category.name.toLowerCase() === result?.toLowerCase()
+  const filterCategory = sampleNews.filter((news) =>
+    news.title.toLowerCase().includes(result?.toLowerCase() || "")
   );
 
   useEffect(() => {
@@ -88,15 +101,15 @@ const SearchResult = () => {
 
   const totalPages = Math.ceil(sampleNews.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedNews = sampleNews.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const paginatedNews = sampleNews.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
 
   return (
-    <div>
+    <div className="w-10/12 m-auto">
       {!found ? (
-        <div className="text-center text-gray-500 mt-5">
-          <h2 className="text-2xl font-semibold">No results found</h2>
-          <p>Try searching for something else.</p>
-        </div>
+        <NotFound />
       ) : (
         <>
           <div className="category_crumb mt-5">
@@ -110,7 +123,7 @@ const SearchResult = () => {
               {filterCategory[0]?.description || "Description not available"}
             </p>
           </div>
-          <div className="mt-5">
+          <div className="mt-5 ">
             <div className="grid grid-cols-12 justify-between">
               <div className="col-span-7">
                 {paginatedNews.map((news, index) => (
@@ -120,7 +133,10 @@ const SearchResult = () => {
                 ))}
               </div>
               <div className="col-span-5">
-                <div className="sticky flex items-center justify-center" style={{ top: "2rem" }}>
+                <div
+                  className="sticky flex items-center justify-center"
+                  style={{ top: "2rem" }}
+                >
                   <DesignedBy />
                 </div>
               </div>

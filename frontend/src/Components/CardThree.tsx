@@ -18,8 +18,7 @@ interface CardThreeProp {
 const CardThree: React.FC<CardThreeProp> = ({ info }) => {
   return (
     <div
-      style={{ borderColor: "#a6001e1e" }}
-      className=" md:border-r lg:w-[300px] "
+      className=" lg:w-[300px] "
     >
       <div className="card_three_cover ">
         <div className="card_three_img overflow-hidden lg:w-[270px] lg:-[270px] rounded-md">

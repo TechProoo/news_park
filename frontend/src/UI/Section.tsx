@@ -47,7 +47,7 @@ const News: React.FC<SectionProps> = ({ cat, space = 3 }) => {
 
   return (
     <div className="news_cover">
-      <div className="t p-3 md:p-2 ">
+      <div className=" p-3 md:p-2 ">
         {/* Header */}
         <div className="news_head">
           <h1 className="fnt text-2xl text-light font-black">{cat}</h1>
@@ -56,7 +56,7 @@ const News: React.FC<SectionProps> = ({ cat, space = 3 }) => {
 
         {/* Body */}
         <div className="news_body mt-10">
-          <div className="grid grid-cols-12 gap-3">
+          <div className="grid grid-cols-12 gap-3 w-full">
             {articles.map((article, index) => (
               <div
                 key={index}

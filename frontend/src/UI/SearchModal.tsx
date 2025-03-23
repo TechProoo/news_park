@@ -35,7 +35,6 @@ const SearchModal = ({
   const addRecent = () => {
     if (searchQuery.trim() === "") return;
 
-    // Check if search already exists, update count
     setRecentSearches((prev) => {
       const existing = prev.find((item) => item.name === searchQuery);
       if (existing) {
@@ -78,7 +77,6 @@ const SearchModal = ({
               </button>
             </div>
 
-            {/* Recent Searches */}
             <div className="mt-4">
               {recentSearches.length > 0 && (
                 <>

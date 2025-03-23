@@ -18,18 +18,24 @@ const Tabs: React.FC<TabsProps> = ({ data }) => {
   const categories = ["All", ...new Set(data.map((info) => info.category))];
 
   return (
-    <div>
+    <div className="">
       <TabGroup>
-        <div className="flex gap-4 items-center">
-          <h1 className="fnt text-2xl">Trending News</h1>
-          <div className="seperator md:w-[250px]"></div>
+        <div className="flex items-center gap-4 border-b pb-4">
+          <h1 className="fnt text-3xl font-bold text-gray-800">
+            Trending News
+          </h1>
+          <div className="seperator md:w-[250px] h-[2px] bg-gray-300"></div>
 
           <TabList className="flex gap-3 flex-wrap">
             {categories.map((category) => (
               <Tab key={category}>
                 {({ selected }) => (
                   <span
-                    className={`rounded ${selected ? "fnt lnk" : "text-sm"}`}
+                    className={`rounded px-4 text-light fnt py-2 cursor-pointer transition-all duration-300 ${
+                      selected
+                        ? "bg-red-300 text-white font-semibold"
+                        : "text-gray-600 hover:bg-gray-200"
+                    }`}
                   >
                     {category}
                   </span>
@@ -39,7 +45,6 @@ const Tabs: React.FC<TabsProps> = ({ data }) => {
           </TabList>
         </div>
 
-        {/* ✅ Generate TabPanels dynamically based on categories */}
         <TabPanels>
           {categories.map((category) => {
             const filteredInfo =
@@ -50,8 +55,8 @@ const Tabs: React.FC<TabsProps> = ({ data }) => {
                     .sort((a, b) => b.views - a.views); // Sort category news by views
 
             return (
-              <TabPanel key={category}>
-                <div className="mt-4 md:flex items-center gap-5">
+              <TabPanel key={category} className="mt-6">
+                <div className="md:flex items-start gap-6">
                   {filteredInfo.length > 0 && (
                     <ImageCard
                       category={filteredInfo[0].category}
@@ -62,7 +67,7 @@ const Tabs: React.FC<TabsProps> = ({ data }) => {
                     />
                   )}
 
-                  <div className="flex flex-col">
+                  <div className="flex flex-col gap-4">
                     {filteredInfo.slice(1, 4).map((info) => (
                       <div key={info.id} className="w-full">
                         <CardTwo

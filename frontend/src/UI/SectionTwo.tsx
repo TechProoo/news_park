@@ -13,13 +13,16 @@ const SectionTwo: React.FC<sectionTwoProp> = ({ cat }) => {
         <div className="seperator md:w-full mt-2 opacity-50"></div>
       </div>
       <div className="mt-10 grid grid-cols-12 gap-5 justify-center">
-        <div className="md:col-span-4 col-span-12 ">
+        <div className="md:col-span-3 col-span-6 ">
           <CardThree info={cat} />
         </div>
-        <div className="md:col-span-4 col-span-12">
+        <div className="md:col-span-3  col-span-6">
           <CardThree info={cat} />
         </div>
-        <div className="md:col-span-4 col-span-12">
+        <div className="md:col-span-3  col-span-6">
+          <CardThree info={cat} />
+        </div>
+        <div className="md:col-span-3  col-span-6">
           <CardThree info={cat} />
         </div>
       </div>
