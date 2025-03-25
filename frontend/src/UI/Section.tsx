@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import ImageCard from "../Components/ImageCard";
 
 interface SectionProps {
@@ -46,29 +47,47 @@ const News: React.FC<SectionProps> = ({ cat, space = 3 }) => {
   }
 
   return (
-    <div className="news_cover">
-      <div className=" p-3 md:p-2 ">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="news_cover"
+    >
+      <div className="p-3 md:p-2">
         {/* Header */}
-        <div className="news_head">
+        <motion.div 
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="news_head"
+        >
           <h1 className="fnt text-2xl text-light font-black">{cat}</h1>
           <div className="seperator md:w-full mt-2 opacity-50"></div>
-        </div>
+        </motion.div>
 
         {/* Body */}
-        <div className="news_body mt-10">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="news_body mt-10"
+        >
           <div className="grid grid-cols-12 gap-3 w-full">
             {articles.map((article, index) => (
-              <div
+              <motion.div 
                 key={index}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
                 className={`md:col-span-${columnSpan} col-span-12`}
               >
                 <ImageCard {...article} />
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

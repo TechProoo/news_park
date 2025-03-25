@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Image from "../assets/dark.jpg";
 
 interface TabsProps {
@@ -18,9 +19,9 @@ const CardFour: React.FC<TabsProps> = ({ data }) => {
       <div className="card_four_image">
         <img src={Image} className="rounded-md" alt="" />
       </div>
-      <h1 className="lnk fnt mt-3 text-light">
+      <Link to={`/news/${data[0].title}`} className="lnk fnt mt-3 text-light">
         {data[0].title}
-      </h1>
+      </Link>
       <div className="mt-1 card_four_description">
         <p className="text-sm">
           {data[0].description}

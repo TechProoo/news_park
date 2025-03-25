@@ -5,7 +5,6 @@ import SectionThree from "../UI/SectionThree";
 import SectionTwo from "../UI/SectionTwo";
 import Trending from "../UI/Trending";
 import newsData from "../Data/trending";
-import Footer from "../Components/Footer";
 
 const Home = () => {
   const filteredData = (cat: string) => {
@@ -19,7 +18,7 @@ const Home = () => {
         <Divide />
         <News cat="News" />
         <Divide />
-        <News cat="Politics" space={4} />
+        <News cat="Politics" space={3} />
         <Divide />
         <SectionTwo cat="Tech" />
         <Divide />
@@ -31,7 +30,6 @@ const Home = () => {
           <SectionThree data={filteredData("Travel")} />
         </div>
       </div>
-
     </div>
   );
 };

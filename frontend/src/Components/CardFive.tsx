@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Eye, MessageCircle } from "lucide-react";
 import Image from "../assets/dark.jpg";
 import BadgeInfo from "./Badge";
+import { Link } from "react-router-dom";
 
 interface NewsCardProps {
   image?: string;
@@ -38,7 +39,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
 
       {/* Content Section */}
       <div className="p-4 md:w-2/3 flex flex-col justify-between">
-        <h1 className="text-lg font-bold fnt lnk text-light">{title}</h1>
+        <Link to={`/news/${title}`} className="text-lg font-bold fnt lnk text-light">{title}</Link>
         <p className="text-xs text-gray-600 mt-3">
           <span className="font-bold text-red-300">{author}</span> • {date}
         </p>

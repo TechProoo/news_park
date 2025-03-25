@@ -1,4 +1,5 @@
 import { Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface imageCardProp {
   category: string;
@@ -31,7 +32,9 @@ const ImageCard: React.FC<imageCardProp> = ({
           </div>
         </div>
         <div className="mt-3">
-          <h1 className="text-white lnk">{title}</h1>
+          <Link to={`/news/${title}`} className="text-white lnk">
+            {title}
+          </Link>
         </div>
         <div className="image_author mt-2">
           <b className="text-sm fnt text-white">

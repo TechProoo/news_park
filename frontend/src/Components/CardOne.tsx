@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Image from "../assets/dark.jpg";
 import { Calendar } from "lucide-react";
 
@@ -13,7 +14,7 @@ const CardOne = () => {
             <Calendar className="text-gray-500" size={10} />
             <small className=" fnt text-xsm text-gray-500">March 21, 2021</small>
           </div>
-          <h1 className="text-sm card_one_topic w-9/12 fnt mt-1">East Bangal Kerala Blasters have lost</h1>
+          <Link to={"/news/East Bangal Kerala Blasters have lost"} className="text-sm card_one_topic w-9/12 fnt mt-1">East Bangal Kerala Blasters have lost</Link>
         </div>
       </div>
     </div>

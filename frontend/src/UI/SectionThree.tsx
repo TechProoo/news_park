@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CardFour from "../Components/CardFour";
 
 interface TabsProps {
@@ -26,7 +27,9 @@ const SectionThree: React.FC<TabsProps> = ({ data }) => {
       </div>
       {data.slice(1, 4).map((res) => (
         <div className="mt-3 pt-3 section_three_content">
-          <h1 className="fnt lnk">{res.title}</h1>
+          <Link to={`/news/${res.title}`} className="fnt lnk">
+            {res.title}
+          </Link>
         </div>
       ))}
     </div>

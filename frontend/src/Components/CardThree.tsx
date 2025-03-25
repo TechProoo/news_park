@@ -1,6 +1,7 @@
 import { Calendar } from "lucide-react";
 import Image from "../assets/dark.jpg";
 import BadgeInfo from "./Badge";
+import { Link } from "react-router-dom";
 
 interface CardThreeProp {
   info: string;
@@ -17,9 +18,7 @@ interface CardThreeProp {
 
 const CardThree: React.FC<CardThreeProp> = ({ info }) => {
   return (
-    <div
-      className=" lg:w-[300px] "
-    >
+    <div className=" lg:w-[300px] ">
       <div className="card_three_cover ">
         <div className="card_three_img overflow-hidden lg:w-[270px] lg:-[270px] rounded-md">
           <img src={Image} className="rounded-md" alt="" />
@@ -33,12 +32,17 @@ const CardThree: React.FC<CardThreeProp> = ({ info }) => {
             </div>
           </div>
           <div className="mt-3">
-            <h1 className="text-light text-md lnk fnt font-bold " >
+            <Link
+              to={`/news/Climate changes in recent prospective`}
+              className="text-light text-md lnk fnt font-bold "
+            >
               Climate changes in recent prospective
-            </h1>
+            </Link>
           </div>
           <div className="mt-2">
-            <small className="">By <span>TechPro</span></small>
+            <small className="">
+              By <span>TechPro</span>
+            </small>
           </div>
         </div>
       </div>
