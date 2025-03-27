@@ -1,4 +1,3 @@
-import React from "react";
 import Trending from "./Trending";
 
 const NotFound = () => {
@@ -15,6 +14,7 @@ const NotFound = () => {
             </h3>
             <Trending />
           </div>
+          
         </div>
       </div>
     </div>

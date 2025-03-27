@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { fetchWeather } from "../Weather/FetchWeather";
 import { motion } from "framer-motion";
 
-
 const Weather = () => {
   const [weatherData, setWeatherData] = useState<any>(null);
 
@@ -17,12 +16,12 @@ const Weather = () => {
         }
         setWeatherData(data);
       } catch (err) {
-        console.log("Error fetching weather:", err);
+        console.error("Error fetching weather:", err);
       }
     };
     getWeather();
   }, []);
-  
+
   if (!weatherData) {
     return (
       <div className="flex flex-col items-center justify-center h-64 bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg p-6">
@@ -32,22 +31,29 @@ const Weather = () => {
         >
           <Sun size={50} className="text-yellow-400 drop-shadow-lg" />
         </motion.div>
-  
-        <p className="mt-4 text-white text-lg font-semibold">Fetching Weather...</p>
-  
+        <p className="mt-4 text-white text-lg font-semibold">
+          Fetching Weather...
+        </p>
         <div className="flex gap-4 mt-4">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ repeat: Infinity, duration: 1.5, repeatType: "reverse" }}
+            transition={{
+              repeat: Infinity,
+              duration: 1.5,
+              repeatType: "reverse",
+            }}
           >
             <CloudRain size={30} className="text-blue-300" />
           </motion.div>
-  
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ repeat: Infinity, duration: 1.5, repeatType: "reverse" }}
+            transition={{
+              repeat: Infinity,
+              duration: 1.5,
+              repeatType: "reverse",
+            }}
           >
             <Wind size={30} className="text-gray-300" />
           </motion.div>
@@ -55,13 +61,14 @@ const Weather = () => {
       </div>
     );
   }
-  
 
   // Extract necessary data
   const currentTemp = Math.round(weatherData.list[0]?.main.temp - 273.15); // Convert from Kelvin to Celsius
+  const weatherDescription =
+    weatherData.list[0]?.weather[0]?.description || "No data";
   const windSpeed = weatherData.list[0]?.wind.speed || "N/A";
   const humidity = weatherData.list[0]?.main.humidity || "N/A";
-  const uvIndex = 6; 
+  const uvIndex = 6; // Placeholder, API may provide this in a different endpoint.
 
   // Get hourly forecast (next 6 hours)
   const hourlyForecast = weatherData.list.slice(0, 6);
@@ -75,7 +82,7 @@ const Weather = () => {
 
         <div className="weather_temp text-white text-center mt-4">
           <h1 className="text-4xl font-bold">{currentTemp}°C</h1>
-          <small>Expect high rain today</small>
+          <small className="capitalize">{weatherDescription}</small>
         </div>
 
         <div className="weather_details flex justify-between mt-4">
@@ -101,13 +108,15 @@ const Weather = () => {
           <small className="font-bold">Hourly Forecast</small>
         </div>
         <div className="flex gap-2 overflow-x-auto mt-3 weather_hourly_inner">
-          {hourlyForecast.map((hour: number, index:number) => (
+          {hourlyForecast.map((hour: any, index: number) => (
             <div
               key={index}
               className="hourly_bg rounded-md p-2 text-center flex flex-col items-center bg-gray-800/50 backdrop-blur-lg"
             >
               <div className="hourly_time">
-                <h1 className="text-xs">{new Date(hour.dt * 1000).getHours()}:00</h1>
+                <h1 className="text-xs">
+                  {new Date(hour.dt * 1000).getHours()}:00
+                </h1>
               </div>
               <div className="hourly_degree text-white font-bold">
                 {Math.round(hour.main.temp - 273.15)}°
