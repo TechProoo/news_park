@@ -3,6 +3,7 @@ import {
   deletePost,
   getAllPosts,
   getPosts,
+  getPostsTitle,
   postBlog,
 } from "../Controllers/posts";
 import { upload } from "../Middleware/Multer";
@@ -10,13 +11,18 @@ import { authenticate } from "../Middleware/authMiddleware";
 
 const router = express.Router();
 
-router.post("/post", upload.single("file"), async (req, res, next) => {
-  try {
-    await postBlog(req, res);
-  } catch (error) {
-    next(error);
+router.post(
+  "/create",
+  authenticate,
+  upload.single("file"),
+  async (req, res, next) => {
+    try {
+      await postBlog(req, res);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 router.get("/allpost", async (req, res, next) => {
   try {
@@ -29,6 +35,14 @@ router.get("/allpost", async (req, res, next) => {
 router.get("/posts/:id", async (req, res, next) => {
   try {
     await getPosts(req, res);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/posts/:id/:title", async (req, res, next) => {
+  try {
+    await getPostsTitle(req, res);
   } catch (error) {
     next(error);
   }
