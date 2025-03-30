@@ -20,9 +20,8 @@ export const ENV: EnvConfig = {
   DB_DATABASE: process.env.DB_DATABASE as string,
   DB_USERNAME: process.env.DB_USERNAME as string,
   DB_PASSWORD: process.env.DB_PASSWORD as string,
-  JWT_SECRET: process.env.JWT_SECRET as string,
+  JWT_SECRET: process.env.JWT_SECRET || "tech_newspark", // Add a default fallback
   NODE_ENV:
     (process.env.NODE_ENV as "development" | "production" | "test") ||
     "development",
 };
-

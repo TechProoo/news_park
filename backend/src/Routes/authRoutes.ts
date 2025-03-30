@@ -11,12 +11,12 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
-router.post("/signUp", async (req, res, next) => {
+router.post("/login", async(req, res, next) => {
   try {
-    await login(req, res);
-  } catch (err) {
-    next(err);
+    await login(req, res, next);
+  } catch (error) {
+    next(error);
   }
-});
+})
 
 export default router;

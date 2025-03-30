@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var authRoutes_1 = require("./authRoutes");
+var postRoute_1 = require("./postRoute");
+var userRoute_1 = require("./userRoute");
+var router = (0, express_1.Router)();
+router.use("/auth", authRoutes_1.default);
+router.use("/blog", postRoute_1.default);
+router.use("/user", userRoute_1.default);
+exports.default = router;

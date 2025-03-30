@@ -69,3 +69,27 @@ export const getPosts = async (req: Request, res: Response) => {
     return httpResponse(500, "Internal server error", null, res);
   }
 };
+
+export const deletePost = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return httpResponse(400, "Post ID is required", null, res);
+    }
+
+    const result = await client.query(
+      "DELETE FROM posts WHERE id = $1 RETURNING *",
+      [id]
+    );
+
+    if (result.rows.length === 0) {
+      return httpResponse(404, "Post not found", null, res);
+    }
+
+    return httpResponse(200, "Post deleted successfully", result.rows[0], res);
+  } catch (error) {
+    console.error("Error deleting post:", error);
+    return httpResponse(500, "Internal server error", null, res);
+  }
+};
