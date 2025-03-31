@@ -49,7 +49,7 @@ export const postBlog = async (req: Request, res: Response) => {
     return httpResponse(201, "Post created successfully", result.rows[0], res);
   } catch (error) {
     console.log("Error posting blog:", error);
-    return httpResponse(500, "Internal server error",  null, res);
+    return httpResponse(500, "Internal server error", null, res);
   }
 };
 
@@ -94,15 +94,18 @@ export const getPosts = async (req: Request, res: Response) => {
 
 export const getPostsTitle = async (req: Request, res: Response) => {
   try {
-    const { id, title } = req.params;
+    const { id } = req.params;
+    const title = req.query.title as string; // Get title from query params
 
-    if (!id) {
-      return httpResponse(400, "User ID is required", null, res);
+    if (!id || !title) {
+      return httpResponse(400, "User ID and title are required", null, res);
     }
 
+    const decodedTitle = decodeURIComponent(title);
+
     const result = await client.query(
-      "SELECT * FROM posts WHERE user_id = $1 AND title = $2",
-      [id, title]
+      "SELECT * FROM posts WHERE user_id = $1 AND title ILIKE $2",
+      [id, decodedTitle]
     );
 
     if (result.rows.length === 0) {

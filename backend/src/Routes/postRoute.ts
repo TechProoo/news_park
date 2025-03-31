@@ -40,7 +40,7 @@ router.get("/posts/:id", async (req, res, next) => {
   }
 });
 
-router.get("/posts/:id/:title", async (req, res, next) => {
+router.get("/posts/content/:id", async (req, res, next) => {
   try {
     await getPostsTitle(req, res);
   } catch (error) {
