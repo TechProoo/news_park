@@ -4,6 +4,12 @@ import admin from "../assets/techPro.png";
 import CardOne from "../Components/CardOne";
 import { Link } from "react-router-dom";
 
+
+const getRandomItem = () => {
+  const items = ["Item1", "Item2", "Item3", "Item4", "Item5"];
+  return items[Math.floor(Math.random() * items.length)];
+};
+
 const Hero = () => {
   return (
     <motion.div
