@@ -45,7 +45,7 @@ const CardThree: React.FC<CardThreeProp> = ({
           <div className="mt-3">
             <Link
               to={`/news/${info.replace(/\s+/g, "-").toLowerCase()}`}
-              className="text-light text-md lnk fnt font-bold "
+              className="text-light text-md lnk line-clamp-3 fnt font-bold "
             >
               {title}
             </Link>

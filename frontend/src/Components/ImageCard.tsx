@@ -12,7 +12,17 @@ interface ImageCardProps {
   height?: string;
 }
 
-const BASE_URL = "http://localhost:5000"; 
+const BASE_URL = "http://localhost:5000";
+
+export const imageMod = (image: string) => {
+  const imageUrl = image
+    ? image.startsWith("http")
+      ? image
+      : `${BASE_URL}${image}` // Append BASE_URL for relative paths
+    : "/default-image.jpg";
+
+  return imageUrl;
+};
 
 const ImageCard: React.FC<ImageCardProps> = ({
   category,
@@ -23,21 +33,16 @@ const ImageCard: React.FC<ImageCardProps> = ({
   width = "100%",
   height = "300px",
 }) => {
-  const formattedDate = formatDateToDDMMYYYY(new Date(created_at));
-
-  // Construct full image URL for Multer uploads
-  const imageUrl = image
-    ? image.startsWith("http")
-      ? image
-      : `${BASE_URL}${image}` // Append BASE_URL for relative paths
-    : "/default-image.jpg"; // Replace with your fallback image
+  const formattedDate = formatDateToDDMMYYYY(
+    created_at instanceof Date ? created_at : new Date(created_at)
+  );
 
   return (
     <div
       style={{
         height,
         width,
-        backgroundImage: `url(${imageUrl})`,
+        backgroundImage: `url(${imageMod(image || "")})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundColor: "#80808082",
@@ -45,13 +50,13 @@ const ImageCard: React.FC<ImageCardProps> = ({
       }}
       className="image_card_cover rounded-lg"
     >
-      <div className="image_card_inner ">
+      <div className="image_card_inner">
         <div className="image_content_top flex gap-4 items-center">
           <span className="image_card_category px-3 py-2 text-xs font-black rounded-full">
             {category}
           </span>
           <div className="flex gap-1 image_card_date items-center">
-            <Calendar className="text-gray-200" size={10} />
+            <Calendar className="text-gray-200" size={14} />
             <small className="fnt text-xsm text-gray-200">
               {formattedDate}
             </small>

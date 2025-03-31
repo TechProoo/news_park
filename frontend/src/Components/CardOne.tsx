@@ -1,20 +1,39 @@
 import { Link } from "react-router-dom";
-import Image from "../assets/dark.jpg";
 import { Calendar } from "lucide-react";
+import { PostProp } from "../data.type";
+import { imageMod } from "./ImageCard";
 
-const CardOne = () => {
+interface CardOneProps {
+  data: PostProp;
+}
+
+const CardOne: React.FC<CardOneProps> = ({ data }) => {
   return (
-    <div className="card_One border-r border-gray-500 ">
+    <div className="card_One  border-r border-gray-500 pr-3">
       <div className="flex items-center gap-2">
-        <div className="card_one_image">
-          <img src={Image} className="" alt="" />
+        <div className="card_one_image md:w-16 md:h-16 overflow-hidden rounded-md">
+          <img
+            src={imageMod(data.image)}
+            className="w-full h-full object-cover"
+            alt={data.title}
+          />
         </div>
-        <div className="">
-          <div className="flex gap-1  items-center">
-            <Calendar className="text-gray-500" size={10} />
-            <small className=" fnt text-xsm text-gray-500">March 21, 2021</small>
+
+        <div className="flex flex-col">
+          <div className="flex gap-1 items-center">
+            <Calendar className="text-gray-500" size={12} />
+            <small className="fnt text-xs text-gray-500">
+              {new Date(data.created_at).toLocaleDateString()}
+            </small>
           </div>
-          <Link to={"/news/East Bangal Kerala Blasters have lost"} className="text-sm card_one_topic w-9/12 fnt mt-1">East Bangal Kerala Blasters have lost</Link>
+
+          {/* Title */}
+          <Link
+            to={`/news/${encodeURIComponent(e)}`}
+            className="text-sm card_one_topic w-9/12 fnt mt-1 line-clamp-2"
+          >
+            {data.title}csqq
+          </Link>
         </div>
       </div>
     </div>

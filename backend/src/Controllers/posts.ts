@@ -142,3 +142,18 @@ export const deletePost = async (req: Request, res: Response) => {
     return httpResponse(500, "Internal server error", null, res);
   }
 };
+
+export const incrementPost = async (req: Request, res: Response) => {
+  const { postId } = req.body;
+
+  try {
+    const result = await client.query(
+      "UPDATE posts SET views = views + 1 WHERE id = $1 RETURNING views",
+      [postId]
+    );
+    httpResponse(201, "Updated Successfully", result.rows[0].views, res);
+  } catch (err) {
+    console.error(err);
+    httpResponse(400, "Could'd update views", null, res);
+  }
+};

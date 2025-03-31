@@ -1,24 +1,30 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import ImageCard from "./ImageCard";
 import CardTwo from "./CardTwo";
+import { PostProp } from "../data.type";
 
 interface TabsProps {
-  data: {
-    id: number;
-    title: string;
-    category: string;
-    description: string;
-    image: string;
-    views: number;
-    date: string;
-  }[];
+  data: PostProp[];
 }
 
-const Tabs: React.FC<TabsProps> = ({ data }) => {
-  const categories = ["All", ...new Set(data.map((info) => info.category))];
+const Tabs: React.FC<TabsProps> = ({ data = [] }) => {
+  console.log("Tabs received data:", data);
+
+  if (!Array.isArray(data)) {
+    console.error("Tabs expected an array but received:", data);
+    return <p className="text-red-500">Error: Data is not available</p>;
+  }
+
+  const uniqueCategories = [...new Set(data.map((info) => info.category))];
+
+  // Shuffle categories randomly
+  const shuffledCategories = uniqueCategories.sort(() => Math.random() - 0.5);
+
+  // Pick 4 random categories and prepend "All"
+  const displayedCategories = ["All", ...shuffledCategories.slice(0, 4)];
 
   return (
-    <div className="">
+    <div>
       <TabGroup>
         <div className="flex items-center gap-4 border-b pb-4">
           <h1 className="fnt text-3xl font-bold text-gray-800">
@@ -27,7 +33,7 @@ const Tabs: React.FC<TabsProps> = ({ data }) => {
           <div className="seperator md:w-[250px] h-[2px] bg-gray-300"></div>
 
           <TabList className="flex gap-3 flex-wrap">
-            {categories.map((category) => (
+            {displayedCategories.map((category) => (
               <Tab key={category}>
                 {({ selected }) => (
                   <span
@@ -46,24 +52,26 @@ const Tabs: React.FC<TabsProps> = ({ data }) => {
         </div>
 
         <TabPanels>
-          {categories.map((category) => {
+          {displayedCategories.map((category) => {
             const filteredInfo =
               category === "All"
-                ? [...data].sort((a, b) => b.views - a.views) // Sort all news by views
+                ? [...data].sort((a, b) => b.views - a.views) // Sort all posts by views
                 : [...data]
                     .filter((item) => item.category === category)
-                    .sort((a, b) => b.views - a.views); // Sort category news by views
+                    .sort((a, b) => b.views - a.views);
 
             return (
               <TabPanel key={category} className="mt-6">
                 <div className="md:flex items-start gap-6">
                   {filteredInfo.length > 0 && (
                     <ImageCard
+                      author={filteredInfo[0].author}
                       category={filteredInfo[0].category}
-                      date={filteredInfo[0].date}
+                      created_at={filteredInfo[0].created_at}
+                      image={filteredInfo[0].image}
                       title={filteredInfo[0].title}
-                      height={"350px"}
-                      width={"300px"}
+                      height="350px"
+                      width="300px"
                     />
                   )}
 
@@ -72,8 +80,9 @@ const Tabs: React.FC<TabsProps> = ({ data }) => {
                       <div key={info.id} className="w-full">
                         <CardTwo
                           category={info.category}
-                          date={info.date}
+                          date={new Date(info.created_at).toLocaleDateString()}
                           title={info.title}
+                          image={info.image}
                         />
                       </div>
                     ))}

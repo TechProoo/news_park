@@ -5,11 +5,6 @@ const categories: { name: string; to: string; description: string }[] = [
     description: "Welcome to our homepage with the latest updates.",
   },
   {
-    name: "News",
-    to: "/category/news",
-    description: "Stay informed with breaking news and updates.",
-  },
-  {
     name: "Politics",
     to: "/category/politics",
     description: "Get the latest political news and analysis.",

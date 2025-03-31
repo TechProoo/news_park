@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Search, X, Clock } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,10 +11,6 @@ const SearchModal = ({
   setIsOpen: (open: boolean) => void;
 }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [recentSearches, setRecentSearches] = useState<
-    { name: string; count: number }[]
-  >([]);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,76 +28,50 @@ const SearchModal = ({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [setIsOpen]);
 
-  const addRecent = () => {
+  const handleSearch = () => {
     if (searchQuery.trim() === "") return;
-
-    setRecentSearches((prev) => {
-      const existing = prev.find((item) => item.name === searchQuery);
-      if (existing) {
-        return prev.map((item) =>
-          item.name === searchQuery ? { ...item, count: item.count + 1 } : item
-        );
-      }
-    navigate(`/search/${searchQuery}`)  
-      return [...prev, { name: searchQuery, count: 1 }];
-    });
-
+    navigate(`/search/${searchQuery}`);
     setSearchQuery("");
+    setIsOpen(false);
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <Transition show={isOpen} as={"div"}>
-        <Dialog
-          open={isOpen}
-          onClose={() => setIsOpen(false)}
-          className="fixed inset-0 flex items-center justify-center z-50"
-        >
-          <div className="fixed inset-0 bg-black/50" aria-hidden="true"></div>
+    <Transition
+      show={isOpen}
+      as="div"
+      className="fixed inset-0 flex items-center justify-center z-50"
+    >
+      <Dialog
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        className="fixed inset-0 flex items-center justify-center z-50"
+      >
+        <div className="fixed inset-0 bg-black/50" aria-hidden="true" />
 
-          <div className="relative bg-white rounded-2xl shadow-xl max-w-lg w-full p-5 z-50">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 w-full">
-                <Search className="text-gray-500" size={20} />
-                <input
-                  type="text"
-                  className="w-full outline-none text-lg text-light"
-                  placeholder="Search news..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && addRecent()}
-                />
-              </div>
-              <button onClick={() => setIsOpen(false)}>
-                <X size={20} className="text-gray-500 hover:text-gray-700" />
-              </button>
+        <div className="relative bg-white rounded-2xl shadow-xl max-w-lg w-full p-5 z-50">
+          <div className="flex items-center justify-between border-b border-gray-300 pb-2">
+            <div className="flex items-center gap-2 w-full">
+              <Search className="text-gray-500" size={20} />
+              <input
+                type="text"
+                className="w-full outline-none text-lg text-gray-700"
+                placeholder="Search news..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                autoFocus
+              />
             </div>
-
-            <div className="mt-4">
-              {recentSearches.length > 0 && (
-                <>
-                  <p className="text-gray-600 text-sm mb-2">Recent</p>
-                  {recentSearches.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center p-2 hover:bg-gray-100 rounded-lg cursor-pointer"
-                    >
-                      <div className="flex gap-2 items-center">
-                        <Clock size={18} className="text-gray-500" />
-                        <span className="text-light">{item.name}</span>
-                      </div>
-                      <span className="text-gray-500 text-sm">
-                        {item.count} views
-                      </span>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="p-1 rounded-full hover:bg-gray-200"
+            >
+              <X size={20} className="text-gray-500 hover:text-gray-700" />
+            </button>
           </div>
-        </Dialog>
-      </Transition>
-    </div>
+        </div>
+      </Dialog>
+    </Transition>
   );
 };
 

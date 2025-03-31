@@ -56,7 +56,7 @@ const Home = () => {
             <Divide />
             <div className="md:flex items-center gap-5 md:gap-10">
               <SectionThree data={filteredData("Travel")} />
-              <SectionThree data={filteredData("Lifestyle")} />
+              <SectionThree data={filteredData("Entertainment")} />
               <SectionThree data={filteredData("Health")} />
             </div>
           </>

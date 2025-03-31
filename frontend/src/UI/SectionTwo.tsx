@@ -24,7 +24,7 @@ const SectionTwo: React.FC<SectionTwoProp> = ({ cat }) => {
                 post.category.toLowerCase() === cat.toLowerCase()
             )
             .sort(
-              (a, b) =>
+              (a: any, b: any) =>
                 new Date(b.created_at).getTime() -
                 new Date(a.created_at).getTime()
             )
@@ -74,7 +74,13 @@ const SectionTwo: React.FC<SectionTwoProp> = ({ cat }) => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className="md:col-span-3 col-span-6"
             >
-              <CardThree info={article.category} title={article.title}  created_at={article.created_at} author={article.author} image={article.image} />
+              <CardThree
+                info={article.category}
+                title={article.title}
+                created_at={article.created_at}
+                author={article.author}
+                image={article.image}
+              />
             </motion.div>
           ))}
         </div>

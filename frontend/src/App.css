@@ -108,14 +108,6 @@
   color: var(--text-color-light);
 }
 
-.hero_left_bottom {
-  margin-top: -20px;
-  margin-left: -35px;
-}
-
-.hero_icons_cover {
-  margin-left: -20px;
-}
 
 .hero_icons b {
   color: var(--text-main);
@@ -123,20 +115,21 @@
 
 .hero_bottom {
   position: absolute;
-  right: 5%;
+  right: 0;
   bottom: 0;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  left: 0;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
   background-color: var(--bg-main);
 }
 
 /* -- CardOne -- */
 
-.card_one_image {
+/* .card_one_image {
   width: 70px;
   height: 70px;
   border-radius: 5px;
-}
+} */
 
 .card_one_image img {
   width: 100%;

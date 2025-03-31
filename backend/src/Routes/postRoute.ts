@@ -4,6 +4,7 @@ import {
   getAllPosts,
   getPosts,
   getPostsTitle,
+  incrementPost,
   postBlog,
 } from "../Controllers/posts";
 import { upload } from "../Middleware/Multer";
@@ -51,6 +52,14 @@ router.get("/posts/content/:id", async (req, res, next) => {
 router.delete("/delete/:id", authenticate, async (req, res, next) => {
   try {
     await deletePost(req, res);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/increment_view", async (req, res, next) => {
+  try {
+    await incrementPost(req, res);
   } catch (error) {
     next(error);
   }

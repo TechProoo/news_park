@@ -4,8 +4,6 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 import SearchModal from "../UI/SearchModal";
 
-
-
 const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -28,13 +26,14 @@ const Navbar = () => {
           </div>
           <ul className="nav_links_cover flex items-center gap-4">
             {categories.map((data, index) => (
-              <li
+              <Link
+                to={data.to}
                 key={index}
                 onClick={() => handleNav(index)}
                 className={activeIndex === index ? "activeLink" : "nav_list"}
               >
                 <Link to={data.to}>{data.name}</Link>
-              </li>
+              </Link>
             ))}
           </ul>
           <div className="flex align-center gap-2 items-center">
