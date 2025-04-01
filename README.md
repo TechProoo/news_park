@@ -85,6 +85,8 @@ npm install
 - `GET /news` – Fetch all news
 - `POST /upload` – Upload images
 
+- There are other end points i cannot remeber right now
+
 ### 🚀 Deployment
 
 ```sh
