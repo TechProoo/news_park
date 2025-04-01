@@ -10,9 +10,21 @@ const port = process.env.PORT || 5000;
 app.use("/uploads", express.static("uploads"));
 
 // MIDDLEWARE
+
+const allowedOrigins = [
+  "https://leafy-starlight-bebb3b.netlify.app",
+  "https://67eb780e59754048d317c75e--imaginative-eclair-79b918.netlify.app",
+];
+
 app.use(
   cors({
-    origin: "https://leafy-starlight-bebb3b.netlify.app",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
