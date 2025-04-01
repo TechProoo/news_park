@@ -32,7 +32,7 @@ const categories: { name: string; to: string; description: string }[] = [
   {
     name: "UI",
     to: "/category/ui",
-    description: "Updates and trends in user interface design.",
+    description: "Updates about the university of Ibadan.",
   },
 ];
 

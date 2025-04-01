@@ -5,7 +5,7 @@ import { ENV } from "./env";
 dotenv.config();
 
 const client = new Client({
-  user: ENV.DB_CONNECTION,
+  user: ENV.DB_USERNAME,
   host: ENV.DB_HOST,
   database: ENV.DB_DATABASE,
   password: ENV.DB_PASSWORD,

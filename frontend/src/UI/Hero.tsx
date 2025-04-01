@@ -70,7 +70,7 @@ const Hero = () => {
               >
                 <Link
                   to={`/news/${randomNews.title}`}
-                  className="w-11/12 line-clamp-3 fnt lnk text-3xl md:text-5xl text-white"
+                  className="w-11/12 line-clamp-3 fnt lnk text-3xl md:text-4xl text-white"
                 >
                   {randomNews.title}
                 </Link>

@@ -2,37 +2,39 @@ import { Link } from "react-router-dom";
 import { Calendar } from "lucide-react";
 import { PostProp } from "../data.type";
 import { imageMod } from "./ImageCard";
-
 interface CardOneProps {
   data: PostProp;
 }
 
+
+
 const CardOne: React.FC<CardOneProps> = ({ data }) => {
   return (
-    <div className="card_One  border-r border-gray-500 pr-3">
-      <div className="flex items-center gap-2">
-        <div className="card_one_image md:w-16 md:h-16 overflow-hidden rounded-md">
+    <div className="card_One border-r border-gray-300 pr-4">
+      <div className="flex items-center gap-3">
+        {/* Image Section */}
+        <div className="w-20 h-20 md:w-20 md:h-20 rounded-lg overflow-hidden">
           <img
             src={imageMod(data.image)}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
             alt={data.title}
           />
         </div>
 
-        <div className="flex flex-col">
-          <div className="flex gap-1 items-center">
-            <Calendar className="text-gray-500" size={12} />
-            <small className="fnt text-xs text-gray-500">
-              {new Date(data.created_at).toLocaleDateString()}
-            </small>
+        {/* Text Content */}
+        <div className="flex flex-col w-full">
+          {/* Date Section */}
+          <div className="flex items-center gap-2 text-gray-500 text-xs">
+            <Calendar size={14} />
+            <span>{new Date(data.created_at).toLocaleDateString()}</span>
           </div>
 
           {/* Title */}
           <Link
-            to={`/news/${encodeURIComponent(e)}`}
-            className="text-sm card_one_topic w-9/12 fnt mt-1 line-clamp-2"
+            to={`/news/${encodeURIComponent(data.title)}`}
+            className="text-sm font-semibold text-gray-800 mt-1 line-clamp-2 hover:text-red-700 transition-colors"
           >
-            {data.title}csqq
+            {data.title}
           </Link>
         </div>
       </div>
@@ -41,3 +43,4 @@ const CardOne: React.FC<CardOneProps> = ({ data }) => {
 };
 
 export default CardOne;
+
