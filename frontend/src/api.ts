@@ -4,7 +4,7 @@ import axios from "axios";
 export const getUserPostByTitle = async (id: string, title: string) => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/api/blog/posts/${id}/${title}`,
+      `https://news-park.onrender.com/api/blog/posts/${id}/${title}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export const getUserPostByTitle = async (id: string, title: string) => {
 export const incrementPost = async (post_id: number) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/blog/increment_view",
+      "https://news-park.onrender.com/api/blog/increment_view",
       { postId: post_id }, // Wrap post_id in an object
       {
         headers: {
@@ -54,7 +54,7 @@ export const incrementPost = async (post_id: number) => {
 export const getCategory = async (cat: number) => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/api/blog/category/${cat}`,
+      `https://news-park.onrender.com/api/blog/category/${cat}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -77,11 +77,14 @@ export const getCategory = async (cat: number) => {
 
 export const getAllPost = async () => {
   try {
-    const response = await axios.get("http://localhost:5000/api/blog/allpost", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.get(
+      "https://news-park.onrender.com/api/blog/allpost",
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     return response.data;
   } catch (error: any) {
     if (error.response) {

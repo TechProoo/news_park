@@ -12,7 +12,7 @@ interface ImageCardProps {
   height?: string;
 }
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://news-park.onrender.com";
 
 export const imageMod = (image: string) => {
   const imageUrl = image

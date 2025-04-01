@@ -11,7 +11,7 @@ interface CardThreeProp {
   title: string;
 }
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://news-park.onrender.com";
 
 const CardThree: React.FC<CardThreeProp> = ({
   info,
@@ -30,7 +30,12 @@ const CardThree: React.FC<CardThreeProp> = ({
     <div className=" lg:w-[300px] ">
       <div className="card_three_cover ">
         <div className="card_three_img overflow-hidden lg:w-[270px] lg:h-[270px] rounded-md">
-          <img style={{objectFit: "cover"}} src={imageUrl} className="rounded-md" alt={info} />
+          <img
+            style={{ objectFit: "cover" }}
+            src={imageUrl}
+            className="rounded-md"
+            alt={info}
+          />
         </div>
         <div className="card_three_content lg:w-[270px] my-4">
           <div className="flex justify-between items-center">
