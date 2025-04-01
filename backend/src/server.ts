@@ -10,7 +10,13 @@ const port = process.env.PORT || 5000;
 app.use("/uploads", express.static("uploads"));
 
 // MIDDLEWARE
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://leafy-starlight-bebb3b.netlify.app",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger);
