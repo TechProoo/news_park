@@ -13,7 +13,7 @@ app.use("/uploads", express.static("uploads"));
 
 const allowedOrigins = [
   "https://leafy-starlight-bebb3b.netlify.app",
-  "https://67eb780e59754048d317c75e--imaginative-eclair-79b918.netlify.app",
+  "imaginative-eclair-79b918.netlify.app",
 ];
 
 app.use(
