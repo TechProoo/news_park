@@ -12,8 +12,8 @@ app.use("/uploads", express.static("uploads"));
 // MIDDLEWARE
 
 const allowedOrigins = [
-  "https://leafy-starlight-bebb3b.netlify.app",
-  "https://imaginative-eclair-79b918.netlify.app",
+  "https://newspark-admin.netlify.app",
+  "https://news-parkk.netlify.app",
 ];
 
 app.use(
