@@ -14,7 +14,6 @@ const router = express.Router();
 
 router.post(
   "/create",
-  authenticate,
   upload.single("file"),
   async (req, res, next) => {
     try {
