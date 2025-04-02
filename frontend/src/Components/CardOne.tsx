@@ -6,11 +6,9 @@ interface CardOneProps {
   data: PostProp;
 }
 
-
-
 const CardOne: React.FC<CardOneProps> = ({ data }) => {
   return (
-    <div className="card_One border-r border-gray-300 pr-4">
+    <div className=" hidden md:block card_One border-r border-gray-300 pr-4">
       <div className="flex items-center gap-3">
         {/* Image Section */}
         <div className="w-20 h-20 md:w-20 md:h-20 rounded-lg overflow-hidden">
@@ -43,4 +41,3 @@ const CardOne: React.FC<CardOneProps> = ({ data }) => {
 };
 
 export default CardOne;
-
